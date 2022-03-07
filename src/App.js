@@ -9,6 +9,22 @@ import ProfileEdit from './services/pages/ProfileEdit';
 import NotFound from './services/pages/NotFound';
 
 class App extends React.Component {
+  constructor() {
+    super();
+    this.state({
+      name: '',
+    });
+  }
+
+  onInputChange = ({ target }) => {
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    this.setState({
+      [name]: value,
+    },
+    () => this.validationName());
+  }
+
   render() {
     return (
       <main>
