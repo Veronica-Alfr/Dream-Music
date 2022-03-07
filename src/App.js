@@ -18,13 +18,18 @@ class App extends React.Component {
           <Route path="/search" component={ Search } />
           <Route path="/album/:id" component={ Album } />
           <Route path="/favorites" component={ Favorites } />
-          <Route path="/profile" component={ Profile } />
-          <Route path="/profile/edit" component={ ProfileEdit } />
+          <Route exact path="/profile" component={ Profile } />
+          <Route exact path="/profile/edit" component={ ProfileEdit } />
           <Route path="*" component={ NotFound } />
         </Switch>
       </main>
     );
   }
 }
+
+// Observei o código do Imar Mendes no requisito 1(R1) para entender porque as divs mesmo com id não passavam
+// logo, observei que elas estavam no local errado.
+// Ajuda de Vitu na monitoria do dia 07/03 para entender o porque não precisava do Link no R1.
+// Ajuda de Vinicius Dionisio para entender que o exact deveria ir nos 2 profiles, não em 1 apenas.
 
 export default App;
