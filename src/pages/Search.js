@@ -80,34 +80,36 @@ class Search extends Component {
                       <p>
                         {`Resultado de álbuns de: ${artist}`}
                       </p>
-                      <div>
-                      {infosArtistOrBand.map(({ artistId, artistName, collectionName,
-                        collectionPrice, releaseDate, trackCount, collectionId,
-                        artworkUrl100,
-                      }) => (
-                        <section key={ collectionId }>
-                          <p>
-                            { artistId }
-                          </p>
-                          <p>
-                            { artistName }
-                          </p>
-                          <p>
-                            { collectionName }
-                          </p>
-                          <p>
-                            { collectionPrice }
-                          </p>
-                          <img src={ artworkUrl100 } alt={ collectionName } />
-                          <p>
-                            { releaseDate }
-                          </p>
-                          <p>
-                            { trackCount }
-                          </p>
-                        </section>
-                      )}
-                      </div>
+                      <section className="album">
+                        {
+                          infosArtistOrBand.map(({ artistId, artistName, collectionName,
+                            collectionPrice, releaseDate, trackCount, collectionId,
+                            artworkUrl100,
+                          }) => (
+                            <section key={ collectionId }>
+                              <p>
+                                { artistId }
+                              </p>
+                              <p>
+                                { artistName }
+                              </p>
+                              <p>
+                                { collectionName }
+                              </p>
+                              <p>
+                                { collectionPrice }
+                              </p>
+                              <img src={ artworkUrl100 } alt={ collectionName } />
+                              <p>
+                                { releaseDate }
+                              </p>
+                              <p>
+                                { trackCount }
+                              </p>
+                            </section>
+                          ))
+                        }
+                      </section>
                     </div>
                   )
                 }
