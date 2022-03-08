@@ -73,7 +73,8 @@ class Search extends Component {
             ? <Loading />
             : (
               infosArtistOrBand.map(({ artistId, artistName, collectionName,
-                releaseDate, trackCount }) => (
+                releaseDate, trackCount,
+              }) => (
                 <section key={ collectionId }>
                   <p>
                     { artistId }
