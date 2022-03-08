@@ -35,8 +35,6 @@ class Search extends Component {
       disabledButtonSearch: true,
       loading: true,
     }, async () => {
-      // const { response } = await searchAlbumsAPI();
-      // await searchAlbumsAPI({ artist });
       const infosAlbum = await searchAlbumsAPI(artist);
       this.setState({
         infosArtistOrBand: infosAlbum,
@@ -44,6 +42,8 @@ class Search extends Component {
       });
     });
   }
+
+  // Ajuda de Rafael Oliveira para entender a requisição da API.
 
   render() {
     const { artist, disabledButtonSearch, infosArtistOrBand, loading } = this.state;
@@ -120,5 +120,7 @@ class Search extends Component {
     );
   }
 }
+
+// Ajuda de Vitu na monitoria do dia 08/03 com uma nova lógica para o Lint não reclamar.
 
 export default Search;
