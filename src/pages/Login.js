@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router';
 import { createUser } from '../services/userAPI';
 import Loading from './Loading';
 
@@ -9,6 +10,7 @@ class Login extends Component {
       name: '',
       disabledButton: true,
       loading: false,
+      redirect: false,
     };
   }
 
@@ -30,11 +32,13 @@ class Login extends Component {
   saveUserNameClick = async () => {
     const { name } = this.state;
     await createUser({ name });
-    this.setState({ loading: true });
+    this.setState({ loading: true, redirect: true });
   }
 
+  // Ajuda de Danillo Gonçalves com a função do botão.
+
   render() {
-    const { name, disabledButton, loading } = this.state;
+    const { name, disabledButton, loading, redirect } = this.state;
     return (
       <section>
         { loading
@@ -61,9 +65,14 @@ class Login extends Component {
               </form>
             </div>
           )}
+        {
+          redirect && <Redirect to="/search" />
+        }
       </section>
     );
   }
 }
+
+// Ajuda de Imar Mendes para entender a condição com Redirect.
 
 export default Login;
