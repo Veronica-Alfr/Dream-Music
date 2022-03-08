@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import Loading from './Loading';
@@ -8,6 +9,7 @@ class Search extends Component {
     super();
     this.state = {
       artist: '',
+      saveArtist: '',
       disabledButtonSearch: true,
       infosArtistOrBand: [],
       loading: false,
@@ -32,6 +34,7 @@ class Search extends Component {
     const { artist } = this.state;
     this.setState({
       artist: '',
+      saveArtist: artist,
       disabledButtonSearch: true,
       loading: true,
     }, async () => {
@@ -46,7 +49,8 @@ class Search extends Component {
   // Ajuda de Rafael Oliveira para entender a requisição da API.
 
   render() {
-    const { artist, disabledButtonSearch, infosArtistOrBand, loading } = this.state;
+    const { artist, saveArtist, disabledButtonSearch,
+      infosArtistOrBand, loading } = this.state;
     return (
       <section>
         <Header />
@@ -75,43 +79,37 @@ class Search extends Component {
             : (
               <div>
                 {
-                  infosArtistOrBand.length > 0 && (
+                  infosArtistOrBand.length > 0 ? (
                     <div>
                       <p>
-                        {`Resultado de álbuns de: ${artist}`}
+                        {`Resultado de álbuns de: ${saveArtist}`}
                       </p>
                       <section className="album">
                         {
-                          infosArtistOrBand.map(({ artistId, artistName, collectionName,
-                            collectionPrice, releaseDate, trackCount, collectionId,
+                          infosArtistOrBand.map(({ artistName, collectionName,
+                            collectionId,
                             artworkUrl100,
                           }) => (
                             <section key={ collectionId }>
-                              <p>
-                                { artistId }
-                              </p>
-                              <p>
-                                { artistName }
-                              </p>
-                              <p>
-                                { collectionName }
-                              </p>
-                              <p>
-                                { collectionPrice }
-                              </p>
-                              <img src={ artworkUrl100 } alt={ collectionName } />
-                              <p>
-                                { releaseDate }
-                              </p>
-                              <p>
-                                { trackCount }
-                              </p>
+                              <Link
+                                to={ `/album/${collectionId}` }
+                                data-testid={ `link-to-album-${collectionId}` }
+                              >
+                                <p>
+                                  { artistName }
+                                </p>
+                                <p>
+                                  { collectionName }
+                                </p>
+                                <img src={ artworkUrl100 } alt={ collectionName } />
+                              </Link>
                             </section>
                           ))
                         }
                       </section>
                     </div>
                   )
+                    : <p>Nenhum álbum foi encontrado</p>
                 }
               </div>
             )}
