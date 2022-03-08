@@ -36,30 +36,32 @@ class Login extends Component {
   render() {
     const { name, disabledButton, loading } = this.state;
     return (
-      <div>
+      <section>
         { loading
           ? <Loading />
-          : <div data-testid="page-login">
-            <form>
-              <input
-                data-testid="login-name-input"
-                type="text"
-                name="name"
-                value={ name }
-                onChange={ this.inputChange }
-              />
-              <button
-                data-testid="login-submit-button"
-                type="button"
-                name="btn"
-                disabled={ disabledButton }
-                onClick={ this.saveUserNameClick }
-              >
-                Entrar
-              </button>
-            </form>
-          </div>}
-      </div>
+          : (
+            <div data-testid="page-login">
+              <form>
+                <input
+                  data-testid="login-name-input"
+                  type="text"
+                  name="name"
+                  value={ name }
+                  onChange={ this.inputChange }
+                />
+                <button
+                  data-testid="login-submit-button"
+                  type="button"
+                  name="btn"
+                  disabled={ disabledButton }
+                  onClick={ this.saveUserNameClick }
+                >
+                  Entrar
+                </button>
+              </form>
+            </div>
+          )}
+      </section>
     );
   }
 }
