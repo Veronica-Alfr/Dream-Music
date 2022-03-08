@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../components/Header';
+import searchAlbumsAPI from '../services/searchAlbumsAPI';
 
 class Search extends Component {
   constructor() {
@@ -7,6 +8,7 @@ class Search extends Component {
     this.state = {
       artist: '',
       disabledButtonSearch: true,
+      infosArtistOrBand: [],
     };
   }
 
@@ -24,8 +26,23 @@ class Search extends Component {
     this.setState({ disabledButtonSearch: artist.length < minWords });
   };
 
+  buttonSearchArtist = async () => {
+    const { artist } = this.state;
+    this.setState({
+      artist: '',
+      disabledButtonSearch: true,
+    }, async () => {
+      // const { response } = await searchAlbumsAPI();
+      // await searchAlbumsAPI({ artist });
+      const infosAlbum = await searchAlbumsAPI(artist);
+      this.setState({
+        infosArtistOrBand: infosAlbum,
+      });
+    });
+  }
+
   render() {
-    const { artist, disabledButtonSearch } = this.state;
+    const { artist, disabledButtonSearch, infosArtistOrBand } = this.state;
     return (
       <section>
         <Header />
@@ -48,6 +65,15 @@ class Search extends Component {
             Pesquisar
           </button>
         </form>
+        <div>
+          {
+            infosArtistOrBand.map(({ artistId, artistName, collectionName }) => (
+              <p key={ artistId }>
+                { artistName, collectionName }
+              </p>
+            ))
+          }
+        </div>
       </section>
     );
   }

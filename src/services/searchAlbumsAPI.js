@@ -28,6 +28,8 @@ const searchAlbumsAPI = async (artist) => {
       trackCount,
     }),
   );
+
+  console.log(response);
   return response;
 };
 
