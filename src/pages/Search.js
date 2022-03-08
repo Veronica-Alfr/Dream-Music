@@ -33,13 +33,14 @@ class Search extends Component {
     this.setState({
       artist: '',
       disabledButtonSearch: true,
+      loading: true,
     }, async () => {
       // const { response } = await searchAlbumsAPI();
       // await searchAlbumsAPI({ artist });
       const infosAlbum = await searchAlbumsAPI(artist);
       this.setState({
-        loading: true,
         infosArtistOrBand: infosAlbum,
+        loading: false,
       });
     });
   }
@@ -98,6 +99,14 @@ class Search extends Component {
                 </section>
               ))
             )}
+          {
+            infosArtistOrBand && <p>
+              Resultado de álbuns de:
+              {' '}
+              { artist }
+              {' '}
+            </p>
+          }
         </div>
       </section>
     );
