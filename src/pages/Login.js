@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { createUser } from '../services/userAPI';
+import Loading from './Loading';
 
 class Login extends Component {
   constructor() {
@@ -6,6 +8,7 @@ class Login extends Component {
     this.state = {
       name: '',
       disabledButton: true,
+      loading: false,
     };
   }
 
@@ -19,34 +22,43 @@ class Login extends Component {
 
   validationName = () => {
     const { name } = this.state;
-    console.log(name);
-    console.log(name.length);
     if (name.length > 2) this.setState({ disabledButton: false });
   };
 
   // Ajuda de Johnata Barreto e Danillo Gonçalves com o this.state e diminuição do if(R3).
 
+  saveUserNameClick = async () => {
+    const { name } = this.state;
+    await createUser({ name });
+    this.setState({ loading: true });
+  }
+
   render() {
-    const { name, disabledButton } = this.state;
+    const { name, disabledButton, loading } = this.state;
     return (
-      <div data-testid="page-login">
-        <form>
-          <input
-            data-testid="login-name-input"
-            type="text"
-            name="name"
-            value={ name }
-            onChange={ this.inputChange }
-          />
-          <button
-            data-testid="login-submit-button"
-            type="button"
-            name="btn"
-            disabled={ disabledButton }
-          >
-            Entrar
-          </button>
-        </form>
+      <div>
+        { loading
+          ? <Loading />
+          : <div data-testid="page-login">
+            <form>
+              <input
+                data-testid="login-name-input"
+                type="text"
+                name="name"
+                value={ name }
+                onChange={ this.inputChange }
+              />
+              <button
+                data-testid="login-submit-button"
+                type="button"
+                name="btn"
+                disabled={ disabledButton }
+                onClick={ this.saveUserNameClick }
+              >
+                Entrar
+              </button>
+            </form>
+          </div>}
       </div>
     );
   }
