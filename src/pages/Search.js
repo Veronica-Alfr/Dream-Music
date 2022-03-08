@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../components/Header';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
+import Loading from './Loading';
 
 class Search extends Component {
   constructor() {
@@ -9,6 +10,7 @@ class Search extends Component {
       artist: '',
       disabledButtonSearch: true,
       infosArtistOrBand: [],
+      loading: false,
     };
   }
 
@@ -36,13 +38,14 @@ class Search extends Component {
       // await searchAlbumsAPI({ artist });
       const infosAlbum = await searchAlbumsAPI(artist);
       this.setState({
+        loading: true,
         infosArtistOrBand: infosAlbum,
       });
     });
   }
 
   render() {
-    const { artist, disabledButtonSearch, infosArtistOrBand } = this.state;
+    const { artist, disabledButtonSearch, infosArtistOrBand, loading } = this.state;
     return (
       <section>
         <Header />
@@ -66,13 +69,34 @@ class Search extends Component {
           </button>
         </form>
         <div>
-          {
-            infosArtistOrBand.map(({ artistId, artistName, collectionName }) => (
-              <p key={ artistId }>
-                { artistName, collectionName }
-              </p>
-            ))
-          }
+          { loading
+            ? <Loading />
+            : (
+              infosArtistOrBand.map(({ artistId, artistName, collectionName,
+                releaseDate, trackCount }) => (
+                <section key={ collectionId }>
+                  <p>
+                    { artistId }
+                  </p>
+                  <p>
+                    { artistName }
+                  </p>
+                  <p>
+                    { collectionName }
+                  </p>
+                  <p>
+                    { collectionPrice }
+                  </p>
+                  <img src={ artworkUrl100 } alt={ collectionName } />
+                  <p>
+                    { releaseDate }
+                  </p>
+                  <p>
+                    { trackCount }
+                  </p>
+                </section>
+              ))
+            )}
         </div>
       </section>
     );
