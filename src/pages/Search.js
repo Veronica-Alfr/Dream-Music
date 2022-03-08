@@ -73,38 +73,46 @@ class Search extends Component {
           { loading
             ? <Loading />
             : (
-              infosArtistOrBand.map(({ artistId, artistName, collectionName,
-                releaseDate, trackCount,
-              }) => (
-                <section key={ collectionId }>
-                  <p>
-                    { artistId }
-                  </p>
-                  <p>
-                    { artistName }
-                  </p>
-                  <p>
-                    { collectionName }
-                  </p>
-                  <p>
-                    { collectionPrice }
-                  </p>
-                  <img src={ artworkUrl100 } alt={ collectionName } />
-                  <p>
-                    { releaseDate }
-                  </p>
-                  <p>
-                    { trackCount }
-                  </p>
-                </section>
-              ))
+              <div>
+                {
+                  infosArtistOrBand.length > 0 && (
+                    <div>
+                      <p>
+                        {`Resultado de álbuns de: ${artist}`}
+                      </p>
+                      <div>
+                      {infosArtistOrBand.map(({ artistId, artistName, collectionName,
+                        collectionPrice, releaseDate, trackCount, collectionId,
+                        artworkUrl100,
+                      }) => (
+                        <section key={ collectionId }>
+                          <p>
+                            { artistId }
+                          </p>
+                          <p>
+                            { artistName }
+                          </p>
+                          <p>
+                            { collectionName }
+                          </p>
+                          <p>
+                            { collectionPrice }
+                          </p>
+                          <img src={ artworkUrl100 } alt={ collectionName } />
+                          <p>
+                            { releaseDate }
+                          </p>
+                          <p>
+                            { trackCount }
+                          </p>
+                        </section>
+                      )}
+                      </div>
+                    </div>
+                  )
+                }
+              </div>
             )}
-          {
-            infosArtistOrBand && <p>
-              Resultado de álbuns de:
-              { artist }
-            </p>
-          }
         </div>
       </section>
     );
