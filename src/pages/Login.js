@@ -24,18 +24,24 @@ class Login extends Component {
 
   validationName = () => {
     const { name } = this.state;
-    if (name.length > 2) this.setState({ disabledButton: false });
+    const minValue = 3;
+    this.setState({ disabledButton: name.length < minValue });
   };
 
   // Ajuda de Johnata Barreto e Danillo Gonçalves com o this.state e diminuição do if(R3).
 
   saveUserNameClick = async () => {
     const { name } = this.state;
-    await createUser({ name });
-    this.setState({ loading: true, redirect: true });
+    this.setState({
+      loading: true,
+    }, async () => {
+      await createUser({ name });
+      this.setState({ loading: false, redirect: true });
+    });
   }
 
   // Ajuda de Danillo Gonçalves com a função do botão.
+  // Ajuda de Imar Mendes com a condicional do disabled e assincronissidade.
 
   render() {
     const { name, disabledButton, loading, redirect } = this.state;
