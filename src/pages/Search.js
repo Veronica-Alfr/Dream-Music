@@ -102,9 +102,7 @@ class Search extends Component {
           {
             infosArtistOrBand && <p>
               Resultado de álbuns de:
-              {' '}
               { artist }
-              {' '}
             </p>
           }
         </div>
