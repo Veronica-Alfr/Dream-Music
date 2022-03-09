@@ -29,7 +29,6 @@ const searchAlbumsAPI = async (artist) => {
     }),
   );
 
-  console.log(response);
   return response;
 };
 
