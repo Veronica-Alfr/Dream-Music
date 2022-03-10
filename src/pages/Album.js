@@ -67,4 +67,6 @@ Album.propTypes = {
   }).isRequired,
 };
 
+// Ajuda de Danillo de Gonçalves na contrução do album e no array de lista de músicas.
+
 export default Album;
