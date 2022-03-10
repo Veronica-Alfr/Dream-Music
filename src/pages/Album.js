@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
-import { getMusics } from '../services/musicsAPI';
+import getMusics from '../services/musicsAPI';
 
 class Album extends Component {
   constructor() {
@@ -12,18 +12,20 @@ class Album extends Component {
       // nameAlbum: '',
       // nameArtistOrBand: '',
       // saveArtistOrBand: '',
-      loading: true,
+      loading: false,
     };
   }
 
   componentDidMount() {
     const { match: { params: { id } } } = this.props; // observar match params -> visualização do código de Imar Mendes.
     this.setState({
-      loading: false,
+      loading: true,
     }, async () => {
-      const album = await getMusics(id); // pq não é lido?
+      const album = await getMusics(id);
+      console.log(album);
       this.setState({
         contentApi: album,
+        loading: false,
       });
     });
   }
