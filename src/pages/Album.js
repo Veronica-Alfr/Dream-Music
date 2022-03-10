@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
+import MusicCard from './MusicCard';
 
 class Album extends Component {
   constructor() {
@@ -9,8 +10,7 @@ class Album extends Component {
     this.state = {
       id: '',
       contentApi: [],
-      // nameAlbum: '',
-      // nameArtistOrBand: '',
+      collectionInfo: {},
       // saveArtistOrBand: '',
       loading: false,
     };
@@ -22,21 +22,33 @@ class Album extends Component {
       loading: true,
     }, async () => {
       const album = await getMusics(id);
-      console.log(album);
+      const musics = album.filter(({ kind }) => kind === 'song');
       this.setState({
-        contentApi: album,
+        contentApi: musics,
+        collectionInfo: album[0],
         loading: false,
       });
     });
   }
 
   render() {
-    const { id, loading, contentApi, /* nameAlbum, nameArtistOrBand,
+    const { id, loading, contentApi, collectionInfo, /* nameAlbum, nameArtistOrBand,
       saveArtistOrBand */ } = this.state;
     return (
       <section>
         <Header />
         <div data-testid="page-album" />
+        <p data-testid="artist-name">{collectionInfo.artistName}</p>
+        <p data-testid="album-name">{collectionInfo.collectionName}</p>
+        {
+          contentApi.map((music) => (
+            <MusicCard
+              key={ music.trackId }
+              trackName={ music.trackName }
+              previewUrl={ music.previewUrl }
+            />
+          ))
+        }
       </section>
     );
   }
