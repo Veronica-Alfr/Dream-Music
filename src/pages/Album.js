@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import { getMusics } from '../services/musicsAPI';
 
@@ -8,15 +9,15 @@ class Album extends Component {
     this.state = {
       id: '',
       contentApi: [],
-      nameAlbum: '',
-      nameArtistOrBand: '',
-      saveArtistOrBand: '',
+      // nameAlbum: '',
+      // nameArtistOrBand: '',
+      // saveArtistOrBand: '',
       loading: true,
     };
   }
 
   componentDidMount() { // a lógica pode ser inversa já que DidMount é após tudo que carregou.
-    const { id } = this.state; // observar match params -> visualização do código de Imar Mendes.
+    const { match: { params: { id } } } = this.props; // observar match params -> visualização do código de Imar Mendes.
     this.setState({
       loading: false,
     }, async () => {
@@ -28,8 +29,8 @@ class Album extends Component {
   }
 
   render() {
-    const { id, loading, nameAlbum, nameArtistOrBand,
-      saveArtistOrBand, contentApi } = this.state;
+    const { id, loading, ontentApi, /* nameAlbum, nameArtistOrBand,
+      saveArtistOrBand */ } = this.state;
     return (
       <section>
         <Header />
@@ -38,5 +39,13 @@ class Album extends Component {
     );
   }
 }
+
+Album.propTypes = { // procurando solução para propTypes de match.params...
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }),
+  }),
+};
 
 export default Album;
