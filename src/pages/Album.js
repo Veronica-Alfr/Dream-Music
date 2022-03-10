@@ -16,7 +16,7 @@ class Album extends Component {
     };
   }
 
-  componentDidMount() { // a lógica pode ser inversa já que DidMount é após tudo que carregou.
+  componentDidMount() {
     const { match: { params: { id } } } = this.props; // observar match params -> visualização do código de Imar Mendes.
     this.setState({
       loading: false,
@@ -29,7 +29,7 @@ class Album extends Component {
   }
 
   render() {
-    const { id, loading, ontentApi, /* nameAlbum, nameArtistOrBand,
+    const { id, loading, contentApi, /* nameAlbum, nameArtistOrBand,
       saveArtistOrBand */ } = this.state;
     return (
       <section>
@@ -40,12 +40,12 @@ class Album extends Component {
   }
 }
 
-Album.propTypes = { // procurando solução para propTypes de match.params...
+Album.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string.isRequired,
-    }),
-  }),
+    }).isRequired,
+  }).isRequired,
 };
 
 export default Album;
