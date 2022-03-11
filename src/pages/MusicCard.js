@@ -10,11 +10,15 @@ class MusicCard extends Component {
         <audio data-testid="audio-component" src={ previewUrl } controls>
           <track kind="captions" />
         </audio>
-        <input
-          data-testid={ `checkbox-music-${trackId}` }
-          type="checkbox"
-          name="favorite"
-        />
+        <label htmlFor="favoriteMusic">
+          Favorita
+          <input
+            id="favoriteMusic"
+            data-testid={ `checkbox-music-${trackId}` }
+            type="checkbox"
+            name="favorite"
+          />
+        </label>
       </div>
     );
   }
