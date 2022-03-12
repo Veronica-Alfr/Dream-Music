@@ -1,21 +1,30 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { addSong } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
 
 class MusicCard extends Component {
   constructor() {
     super();
     this.state = {
-      favoritesSongs: false,
+      checked: false,
       loading: false,
     };
+  }
+
+  async componentDidMount() {
+    const { trackId } = this.props;
+    const getSongs = await getFavoriteSongs();
+    const checkedFavorite = getSongs.some((song) => song.trackId === trackId);
+    this.setState({
+      checked: checkedFavorite,
+    });
   }
 
   addSongsAndSave = async () => {
     const { music } = this.props;
     this.setState({
-      favoritesSongs: true,
+      checked: true,
       loading: true,
     }, async () => {
       await addSong(music);
@@ -28,7 +37,7 @@ class MusicCard extends Component {
   // Ajuda de Luá Octaviano no desenvolvimento da lógica no Requisito 8.
 
   render() {
-    const { favoritesSongs, loading } = this.state;
+    const { checked, loading } = this.state;
     const { previewUrl, trackName, trackId } = this.props;
     return (
       <div>
@@ -48,7 +57,7 @@ class MusicCard extends Component {
                     data-testid={ `checkbox-music-${trackId}` }
                     type="checkbox"
                     name="favorite"
-                    checked={ favoritesSongs }
+                    checked={ checked }
                     onChange={ this.addSongsAndSave }
                   />
                 </label>
