@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import addSong from '../services/favoriteSongsAPI';
+import { addSong } from '../services/favoriteSongsAPI';
+import Loading from './Loading';
 
 class MusicCard extends Component {
   constructor() {
@@ -11,43 +12,49 @@ class MusicCard extends Component {
     };
   }
 
-  handleSongsFavotites = ({ target }) => {
-    const { name } = target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    this.setState({
-      [name]: value,
-    });
-  }
-
   addSongsAndSave = async () => {
-    // const musicsFavorites = await addSong(song);
+    const { music } = this.props;
     this.setState({
       favoritesSongs: true,
       loading: true,
+    }, async () => {
+      await addSong(music);
+      this.setState({
+        loading: false,
+      });
     });
   }
+
+  // Ajuda de Luá Octaviano no desenvolvimento da lógica no Requisito 8.
 
   render() {
     const { favoritesSongs, loading } = this.state;
     const { previewUrl, trackName, trackId } = this.props;
     return (
       <div>
-        {loading}
-        <p>{trackName}</p>
-        <audio data-testid="audio-component" src={ previewUrl } controls>
-          <track kind="captions" />
-        </audio>
-        <label htmlFor="favoriteMusic">
-          Favorita
-          <input
-            id="favoriteMusic"
-            data-testid={ `checkbox-music-${trackId}` }
-            type="checkbox"
-            name="favorite"
-            checked={ favoritesSongs }
-            onChange={ this.handleSongsFavotites }
-          />
-        </label>
+        {
+          loading
+            ? <Loading />
+            : (
+              <>
+                <p>{trackName}</p>
+                <audio data-testid="audio-component" src={ previewUrl } controls>
+                  <track kind="captions" />
+                </audio>
+                <label htmlFor="favoriteMusic">
+                  Favorita
+                  <input
+                    id="favoriteMusic"
+                    data-testid={ `checkbox-music-${trackId}` }
+                    type="checkbox"
+                    name="favorite"
+                    checked={ favoritesSongs }
+                    onChange={ this.addSongsAndSave }
+                  />
+                </label>
+              </>
+            )
+        }
       </div>
     );
   }
@@ -57,6 +64,7 @@ MusicCard.propTypes = {
   trackName: PropTypes.string.isRequired,
   previewUrl: PropTypes.string.isRequired,
   trackId: PropTypes.number.isRequired,
+  music: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 export default MusicCard;
