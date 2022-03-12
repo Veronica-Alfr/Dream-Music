@@ -21,6 +21,8 @@ class MusicCard extends Component {
     });
   }
 
+  // Ajuda de Adelson Lima na lógica do checked.
+
   addSongsAndSave = async () => {
     const { music } = this.props;
     this.setState({
