@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import addSong from '../services/favoriteSongsAPI';
+// import addSong from '../services/favoriteSongsAPI';
 
 class MusicCard extends Component {
   constructor() {
     super();
     this.state = {
-      favoritesSongs: [],
+      favoritesSongs: false,
       loading: false,
     };
   }
@@ -19,11 +19,20 @@ class MusicCard extends Component {
     });
   }
 
+  addSongsAndSave = async () => {
+    // const musicsFavorites = await addSong(song);
+    this.setState({
+      favoritesSongs: true,
+      loading: true,
+    });
+  }
+
   render() {
     const { favoritesSongs, loading } = this.state;
     const { previewUrl, trackName, trackId } = this.props;
     return (
       <div>
+        {loading}
         <p>{trackName}</p>
         <audio data-testid="audio-component" src={ previewUrl } controls>
           <track kind="captions" />
@@ -35,6 +44,7 @@ class MusicCard extends Component {
             data-testid={ `checkbox-music-${trackId}` }
             type="checkbox"
             name="favorite"
+            checked={ favoritesSongs }
             onChange={ this.handleSongsFavotites }
           />
         </label>
