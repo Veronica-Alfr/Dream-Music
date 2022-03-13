@@ -33,30 +33,28 @@ class MusicCard extends Component {
       this.setState({
         loading: false,
         checked: true,
-      }, async () => {
-        await removeSong(music);
-        // const { trackId } = this.props;
-        this.setState({
-          loading: true,
-          checked: false, // o numero de checkboxs precisa ser diminuido!
-        }, async () => {
-          this.setState({
-            loading: false,
-          });
-        });
       });
     });
   }
 
-  // Ajuda de Luá Octaviano no desenvolvimento da lógica no Requisito 8.
+  removeSongsAndSave = async () => {
+    const { music } = this.props;
+    this.setState({
+      loading: true,
+    }, async () => {
+      await removeSong(music);
+      this.setState({
+        loading: false,
+        checked: false,
+      });
+    });
+  }
 
-  // , async () => {
-  //   const deleteSongs = await removeSong(music);
-  // const { trackId } = this.props;
-  // const checkedRemoveSongs = deleteSongs.some((song) => song.trackId !== trackId);
-  //   console.log(songDelete);
-  //   se o elemento não existe, renderiza tudo na tela novamente?
-  // }
+  addOrRemove = () => {
+    this.addSongsAndSave();
+  }
+
+  // Ajuda de Luá Octaviano no desenvolvimento da lógica no Requisito 8.
 
   render() {
     const { checked, loading } = this.state;
@@ -80,7 +78,7 @@ class MusicCard extends Component {
                     type="checkbox"
                     name="favorite"
                     checked={ checked }
-                    onChange={ this.addSongsAndSave }
+                    onChange={ this.addOrRemove }
                   />
                 </label>
               </>
