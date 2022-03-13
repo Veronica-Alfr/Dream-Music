@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
 
 class MusicCard extends Component {
@@ -25,18 +25,38 @@ class MusicCard extends Component {
 
   addSongsAndSave = async () => {
     const { music } = this.props;
+    // const { trackId } = this.props;
     this.setState({
-      checked: true,
       loading: true,
     }, async () => {
       await addSong(music);
       this.setState({
         loading: false,
+        checked: true,
+      }, async () => {
+        await removeSong(music);
+        // const { trackId } = this.props;
+        this.setState({
+          loading: true,
+          checked: false, // o numero de checkboxs precisa ser diminuido!
+        }, async () => {
+          this.setState({
+            loading: false,
+          });
+        });
       });
     });
   }
 
   // Ajuda de Luá Octaviano no desenvolvimento da lógica no Requisito 8.
+
+  // , async () => {
+  //   const deleteSongs = await removeSong(music);
+  // const { trackId } = this.props;
+  // const checkedRemoveSongs = deleteSongs.some((song) => song.trackId !== trackId);
+  //   console.log(songDelete);
+  //   se o elemento não existe, renderiza tudo na tela novamente?
+  // }
 
   render() {
     const { checked, loading } = this.state;
