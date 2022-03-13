@@ -60,6 +60,8 @@ class MusicCard extends Component {
   }
 
   // Ajuda de Luá Octaviano no desenvolvimento da lógica no Requisito 8.
+  // Ajuda de Danillo Gonçalves na lógica para criar uma função intermediária entre as funções
+  // de adicionar e remover para o checked habilitar e desabilitar sem problemas.
 
   render() {
     const { checked, loading } = this.state;
