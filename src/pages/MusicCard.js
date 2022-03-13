@@ -50,8 +50,13 @@ class MusicCard extends Component {
     });
   }
 
-  addOrRemove = () => {
-    this.addSongsAndSave();
+  addOrRemove = ({ target }) => {
+    console.log(target.checked);
+    if (target.checked) {
+      this.addSongsAndSave();
+    } else {
+      this.removeSongsAndSave();
+    }
   }
 
   // Ajuda de Luá Octaviano no desenvolvimento da lógica no Requisito 8.
