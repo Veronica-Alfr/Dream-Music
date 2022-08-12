@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router';
 import { createUser } from '../services/userAPI';
 import Loading from './Loading';
+import ContainerLogin from '../styles/Login';
+// import { Button } from '@mui/material';
 
 class Login extends Component {
   constructor() {
@@ -28,8 +30,6 @@ class Login extends Component {
     this.setState({ disabledButton: name.length < minValue });
   };
 
-  // Ajuda de Johnata Barreto e Danillo Gonçalves com o this.state e diminuição do if(R3).
-
   saveUserNameClick = async () => {
     const { name } = this.state;
     this.setState({
@@ -40,17 +40,15 @@ class Login extends Component {
     });
   }
 
-  // Ajuda de Danillo Gonçalves com a função do botão.
-  // Ajuda de Imar Mendes com a condicional do disabled e assincronissidade.
-
   render() {
     const { name, disabledButton, loading, redirect } = this.state;
     return (
-      <section>
+      <ContainerLogin>
         { loading
           ? <Loading />
           : (
-            <div data-testid="page-login">
+            <div data-testid="page-login" className="containerPageLogin">
+              <h1>Dream Music</h1>
               <form>
                 <input
                   data-testid="login-name-input"
@@ -58,6 +56,7 @@ class Login extends Component {
                   name="name"
                   value={ name }
                   onChange={ this.inputChange }
+                  placeholder="User Name"
                 />
                 <button
                   data-testid="login-submit-button"
@@ -74,11 +73,9 @@ class Login extends Component {
         {
           redirect && <Redirect to="/search" />
         }
-      </section>
+      </ContainerLogin>
     );
   }
 }
-
-// Ajuda de Imar Mendes para entender a condição com Redirect.
 
 export default Login;
