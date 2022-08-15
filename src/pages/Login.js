@@ -3,6 +3,7 @@ import { Redirect } from 'react-router';
 import { createUser } from '../services/userAPI';
 import Loading from './Loading';
 import ContainerLogin from '../styles/Login';
+import music from '../imagens/music01.svg';
 // import { Button } from '@mui/material';
 
 class Login extends Component {
@@ -49,6 +50,7 @@ class Login extends Component {
           : (
             <div data-testid="page-login" className="containerPageLogin">
               <h1>Dream Music</h1>
+              <img src={ music } alt="A black man listening music" />
               <form>
                 <input
                   data-testid="login-name-input"
@@ -56,7 +58,7 @@ class Login extends Component {
                   name="name"
                   value={ name }
                   onChange={ this.inputChange }
-                  placeholder="User Name"
+                  placeholder="Username"
                 />
                 <button
                   data-testid="login-submit-button"
