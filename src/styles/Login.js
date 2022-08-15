@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const ContainerLogin = styled.div`
-    @import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Libre+Baskerville&display=swap');
 
     height: 100vh;
     width: 100vw;  
@@ -18,39 +18,45 @@ const ContainerLogin = styled.div`
         align-items: center;
     }
 
-    .containerPageLogin h1 {
-        font-family: Steinerlight.ttf;
+    h1 {
+        font-family: 'Dancing Script';
+        font-size: 60px;
+    }
+
+    img {
+        heigth: 60%;
+        width: 60%;
     }
 
     input {
-        height: 40px;
+        height: 30px;
         width: 290px;
         padding: 8px;
-        margin: 10%;
+        margin: 6%;
         margin-left: 20%;
-        margin-top: 30%;
+        margin-top: 5%;
         border-radius: 16px;
-        font-size: 22px;
-        font-family: 'Kalam', cursive;
+        font-size: 20px;
+        font-family: 'Libre Baskerville';
         box-shadow: 2px 2px 4px gray;
     }
     
     input::placeholder {
-        padding-left: 4px;
-        font-size: 24px;
+        padding: 4px;
+        font-size: 20px;
         color: gray;
-        font-family: 'Kalam', cursive;
+        font-family: 'Libre Baskerville';
     }
 
     button {
-        width: 260px;
-        height: 66px;
+        width: 250px;
+        height: 55px;
         border-radius: 20px;
         background-color: black;
         color: rgb(223, 245, 247);
-        font-size: 40px;
+        font-size: 28px;
         margin-left: 26%;
-        font-family: 'Kalam', cursive;
+        font-family: 'Libre Baskerville';
         border: none;
         user-select: none;
     }
