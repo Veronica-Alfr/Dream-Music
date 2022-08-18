@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { ImSearch } from 'react-icons/im';
 import Header from '../components/Header';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import Loading from './Loading';
+import ContainerHeaderAndSearch, { ContainerSearch } from '../styles/Search';
 
 class Search extends Component {
   constructor() {
@@ -52,58 +54,57 @@ class Search extends Component {
     const { artist, saveArtist, disabledButtonSearch,
       infosArtistOrBand, loading } = this.state;
     return (
-      <section>
+      <ContainerHeaderAndSearch>
         <Header />
-        <div data-testid="page-search" />
-        <form>
-          <input
-            data-testid="search-artist-input"
-            type="text"
-            name="artist"
-            value={ artist }
-            onChange={ this.inputArtistChange }
-          />
-          <button
-            data-testid="search-artist-button"
-            type="button"
-            name="btn"
-            disabled={ disabledButtonSearch }
-            onClick={ this.buttonSearchArtist }
-          >
-            Pesquisar
-          </button>
-        </form>
+        <ContainerSearch>
+          <form>
+            <input
+              data-testid="search-artist-input"
+              type="text"
+              name="artist"
+              value={ artist }
+              onChange={ this.inputArtistChange }
+            />
+            <ImSearch
+              data-testid="search-artist-button"
+              className="search"
+              type="button"
+              name="btn"
+              disabled={ disabledButtonSearch }
+              onClick={ this.buttonSearchArtist }
+            />
+          </form>
+        </ContainerSearch>
         <div>
           { loading
             ? <Loading />
             : (
-              <div>
+              <ContainerSearch>
                 {
                   infosArtistOrBand.length > 0 ? (
-                    <div>
+                    <div className="containerAlbum">
                       <p>
                         {`Resultado de álbuns de: ${saveArtist}`}
                       </p>
-                      <section className="album">
+                      <section>
                         {
                           infosArtistOrBand.map(({ artistName, collectionName,
                             collectionId,
                             artworkUrl100,
                           }) => (
-                            <section key={ collectionId }>
-                              <Link
-                                to={ `/album/${collectionId}` }
-                                data-testid={ `link-to-album-${collectionId}` }
-                              >
-                                <p>
-                                  { artistName }
-                                </p>
-                                <p>
-                                  { collectionName }
-                                </p>
-                                <img src={ artworkUrl100 } alt={ collectionName } />
-                              </Link>
-                            </section>
+                            <Link
+                              to={ `/album/${collectionId}` }
+                              data-testid={ `link-to-album-${collectionId}` }
+                              key={ collectionId }
+                            >
+                              <p>
+                                { artistName }
+                              </p>
+                              <p>
+                                { collectionName }
+                              </p>
+                              <img src={ artworkUrl100 } alt={ collectionName } />
+                            </Link>
                           ))
                         }
                       </section>
@@ -111,10 +112,10 @@ class Search extends Component {
                   )
                     : <p>Nenhum álbum foi encontrado</p>
                 }
-              </div>
+              </ContainerSearch>
             )}
         </div>
-      </section>
+      </ContainerHeaderAndSearch>
     );
   }
 }

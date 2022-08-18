@@ -1,8 +1,14 @@
+import { CircularProgress } from '@mui/material';
 import React, { Component } from 'react';
+import ContainerLoading from '../styles/Loading';
 
 class Loading extends Component {
   render() {
-    return <span>Carregando...</span>;
+    return (
+      <ContainerLoading>
+        <CircularProgress color="inherit" />
+      </ContainerLoading>
+    );
   }
 }
 

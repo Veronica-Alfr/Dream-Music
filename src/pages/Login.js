@@ -4,7 +4,6 @@ import { createUser } from '../services/userAPI';
 import Loading from './Loading';
 import ContainerLogin from '../styles/Login';
 import music from '../imagens/music01.svg';
-// import { Button } from '@mui/material';
 
 class Login extends Component {
   constructor() {
