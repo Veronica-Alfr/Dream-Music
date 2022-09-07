@@ -22,6 +22,11 @@ const ContainerSearch = styled.div`
     background: linear-gradient(90deg, rgba(0,0,0,0.9220063025210083) 0%, 
     rgba(11,12,32,0.9304096638655462) 35%, rgba(8,8,59,0.9304096638655462) 100%);
 
+    .headphone {
+        width: 8%;
+        margin-top: 0.5%;
+    }
+
     form {
         display: flex;
         justify-content: flex-end;
@@ -48,6 +53,7 @@ const ContainerSearch = styled.div`
         align-items: center;
         flex-wrap: wrap;
         margin-top: 2%;
+        margin-left: 2.5%;
     }
 
     .containerAlbum {
@@ -72,8 +78,8 @@ const ContainerSearch = styled.div`
         margin: 1%;
         font-size: 0.7em;
         color: black;
-        width: 12%;
-        heigth: 12%;
+        width: 17%;
+        heigth: 13%;
         background: rgba(101, 105, 140, 0.7);
         border-radius: 16px;
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -84,7 +90,7 @@ const ContainerSearch = styled.div`
 
 
     img {
-        width: 70%;
+        width: 100%;
         height: 70%;
         border-radius: 8px;
     }

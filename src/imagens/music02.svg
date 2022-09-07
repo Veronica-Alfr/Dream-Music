@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<svg width="178" height="196" viewBox="0 0 178 196" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_f_3_119)">
+<line x1="17.375" y1="58.8393" x2="17.375" y2="137.161" stroke="#1500FF" stroke-width="5"/>
+<line x1="160.196" y1="58.8393" x2="160.196" y2="137.161" stroke="#1500FF" stroke-width="5"/>
+<line x1="64.9822" y1="34.2679" x2="64.9822" y2="161.732" stroke="#1500FF" stroke-width="5"/>
+<line x1="112.589" y1="12" x2="112.589" y2="184" stroke="#1500FF" stroke-width="5"/>
+</g>
+<defs>
+<filter id="filter0_f_3_119" x="0.482143" y="0.482143" width="176.607" height="195.036" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="5.75893" result="effect1_foregroundBlur_3_119"/>
+</filter>
+</defs>
+</svg>

@@ -22,6 +22,11 @@ const ContainerHeader = styled.div`
         font-family: 'Dancing Script';
         font-size: 1.2em;
     }
+
+    img {
+        width: 35%;
+        margin: 5%;
+    }
 `;
 
 export default ContainerHeader;
