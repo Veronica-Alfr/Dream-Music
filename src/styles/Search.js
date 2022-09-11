@@ -62,7 +62,7 @@ const ContainerSearch = styled.div`
         justify-content: center;
         align-items: center;
         margin-top: 3%;
-        font-family: 'Libre Baskerville'; //precisa ?
+        font-family: 'Libre Baskerville';
     }
 
     .containerAlbum p {

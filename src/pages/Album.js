@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
 import MusicCard from './MusicCard';
 import Loading from './Loading';
+import ContainerAlbum from '../styles/Album';
 
 class Album extends Component {
   constructor() {
@@ -39,7 +40,8 @@ class Album extends Component {
           {loading
             ? <Loading />
             : (
-              <>
+              <ContainerAlbum>
+                <div className='album'>
                 <p data-testid="artist-name">{collectionInfo.artistName}</p>
                 <p data-testid="album-name">{collectionInfo.collectionName}</p>
                 {
@@ -50,10 +52,13 @@ class Album extends Component {
                       previewUrl={ music.previewUrl }
                       trackId={ music.trackId }
                       music={ music }
+                      img={ music.artworkUrl100 }
+                      collectionName={ music.collectionName }
                     />
                   ))
                 }
-              </>
+                </div>
+              </ContainerAlbum>
             )}
         </div>
       </section>
