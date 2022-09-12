@@ -35,12 +35,12 @@ class Album extends Component {
     const { loading, contentApi, collectionInfo } = this.state;
     return (
       <section>
-        <Header />
-        <div data-testid="page-album">
+      <Header />
+        <ContainerAlbum>
+        {/* <div data-testid="page-album"> */}
           {loading
             ? <Loading />
             : (
-              <ContainerAlbum>
                 <div className='album'>
                 <p data-testid="artist-name">{collectionInfo.artistName}</p>
                 <p data-testid="album-name">{collectionInfo.collectionName}</p>
@@ -58,9 +58,9 @@ class Album extends Component {
                   ))
                 }
                 </div>
-              </ContainerAlbum>
             )}
-        </div>
+        {/* </div> */}
+        </ContainerAlbum>
       </section>
     );
   }

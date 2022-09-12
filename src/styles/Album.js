@@ -4,8 +4,6 @@ const ContainerAlbum = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
-    width: 100vw;
     background: rgb(0,0,0);
     background: linear-gradient(90deg, rgba(0,0,0,0.9220063025210083) 0%, 
     rgba(11,12,32,0.9304096638655462) 35%, rgba(8,8,59,0.9304096638655462) 100%);
