@@ -5,7 +5,7 @@ Atráves do cunsumo de uma API de músicas, a aplicação reproduz diversas can�
 ### Badge dos Projetos
 
 <div>
-  <img src="https://img.shields.io/static/v1?label=Issues&message=0 open&color=ff0783&style=for-the-badge"/>
-  <a href="https://github.com/Veronica-Alfr/Dream-Music/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/Veronica-Alfr/Dream-Music?  color=ff0783&style=flat-square"></a>
+  <a href="https://github.com/Veronica-Alfr/Dream-Music/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/Veronica-Alfr/Dream-Music?color=ff0783&style=flat-square"></a>
+ <a href="https://github.com/Veronica-Alfr/Dream-Music/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/Veronica-Alfr/Dream-Music?color=ff0783&style=flat-square"></a>
 </div>
 
