@@ -9,3 +9,4 @@ Atráves do cunsumo de uma API de músicas, a aplicação reproduz diversas can�
  <a href="https://github.com/Veronica-Alfr/Dream-Music/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/Veronica-Alfr/Dream-Music?color=ff0783&style=flat-square" width='6%'></a>
 </div>
 
+### Documentação
