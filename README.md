@@ -12,6 +12,6 @@ Atráves do cunsumo de uma API de músicas, a aplicação reproduz diversas can�
 ### Documentação
 
 <div>
- • <p>Objetivo</p>
- • <p>Tecnologias</p>
+ <p>Objetivo</p>
+ <p>Tecnologias</p>
 </div>
