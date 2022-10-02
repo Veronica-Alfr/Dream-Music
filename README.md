@@ -15,3 +15,7 @@ Atráves do cunsumo de uma API de músicas, a aplicação reproduz diversas can�
  <p>Objetivo</p>
  <p>Tecnologias</p>
 </div>
+
+	### Status do Projeto  
+  
+  Finalizado ✅🚀
