@@ -19,9 +19,8 @@ Finalizado ✅🚀
 
 ### Como rodar a aplicação
 
+<div background-color='gray'>
+
+</div>
+
 ### 🛠 Tecnologias
--- Colocar link que redireciona para elas
-
-### Autor
-
-### Licença
