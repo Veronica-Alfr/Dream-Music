@@ -19,8 +19,4 @@ Finalizado ✅🚀
 
 ### Como rodar a aplicação
 
-<div background-color='gray'>
-
-</div>
-
 ### 🛠 Tecnologias
