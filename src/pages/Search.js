@@ -59,7 +59,7 @@ class Search extends Component {
         <Header />
         <ContainerSearch>
           <form>
-            <img src={ music03 } alt="Headphone" className='headphone'/>
+            <img src={ music03 } alt="Headphone" className="headphone" />
             <input
               data-testid="search-artist-input"
               type="text"
@@ -98,7 +98,7 @@ class Search extends Component {
                               to={ `/album/${collectionId}` }
                               data-testid={ `link-to-album-${collectionId}` }
                               key={ collectionId }
-                              >
+                            >
                               <img src={ artworkUrl100 } alt={ collectionName } />
                               <p>
                                 { artistName }

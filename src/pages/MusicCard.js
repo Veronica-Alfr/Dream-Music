@@ -77,12 +77,11 @@ class MusicCard extends Component {
               <ContainerMusicCard>
                 <img src={ img } alt={ collectionName } />
                 <p>{trackName}</p>
-                <div className='audioAndCheckbox'>
+                <div className="audioAndCheckbox">
                   <audio data-testid="audio-component" src={ previewUrl } controls>
                     <track kind="captions" />
                   </audio>
                   <label htmlFor="favoriteMusic">
-                    {
                     <input
                       id="favoriteMusic"
                       data-testid={ `checkbox-music-${trackId}` }
@@ -90,8 +89,7 @@ class MusicCard extends Component {
                       name="favorite"
                       checked={ checked }
                       onChange={ this.addOrRemove }
-                    /> 
-                    }
+                    />
                   </label>
                 </div>
               </ContainerMusicCard>

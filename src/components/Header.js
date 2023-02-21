@@ -1,35 +1,35 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { getUser } from '../services/userAPI';
-import Loading from '../pages/Loading';
+// import { getUser } from '../services/userAPI';
+// import Loading from '../pages/Loading';
 import ContainerHeader from '../styles/Header';
-import music02 from '../imagens/music02.svg'
+import music02 from '../imagens/music02.svg';
 
 class Header extends Component {
-  constructor() {
-    super();
-    this.state = {
-      name: '',
-      loading: true,
-    };
-  }
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     name: '',
+  //     loading: true,
+  //   };
+  // }
 
-  async componentDidMount() {
-    this.setState(
-      async () => {
-        const { name } = await getUser();
-        this.setState({
-          loading: false,
-          name,
-        });
-      },
-    );
-  }
+  // async componentDidMount() {
+  //   this.setState(
+  //     async () => {
+  //       const { name } = await getUser();
+  //       this.setState({
+  //         loading: false,
+  //         name,
+  //       });
+  //     },
+  //   );
+  // }
 
   // Ajuda de Imar Mendes na lógica dos states.
 
   render() {
-    const { name, loading } = this.state;
+    // const { name, loading } = this.state;
     return (
       <ContainerHeader>
         <header data-testid="header-component">
